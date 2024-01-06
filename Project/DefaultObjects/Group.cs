@@ -6,6 +6,7 @@ public class Group : BaseGameObject {
     public readonly List<GameObject> GameObjects = new();
 
     public void AddGameObject(GameObject gameObject) {
+        gameObject.Parent = this;
         GameObjects.Add(gameObject);
     }
 
@@ -14,6 +15,10 @@ public class Group : BaseGameObject {
             GameObjects[i].Dispose();
             GameObjects.Remove(GameObjects[i]);
         }
+    }
+
+    public void RemoveGameObject(GameObject gameObject) {
+        GameObjects.Remove(gameObject);
     }
 
     public override void Render(Scene scene) {

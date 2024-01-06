@@ -116,7 +116,7 @@ public class Model : IDisposable {
             textures.AddRange(heightMaps);
 
         // return a mesh object created from the extracted mesh data
-        var result = new Mesh(_gl, BuildVertices(vertices), BuildIndices(indices));
+        var result = new Mesh(_gl, BuildVertices(vertices), BuildIndices(indices), true);
         return result;
     }
 
@@ -151,11 +151,11 @@ public class Model : IDisposable {
             vertices.Add(vertex.Position.X);
             vertices.Add(vertex.Position.Y);
             vertices.Add(vertex.Position.Z);
+            vertices.Add(vertex.TexCoords.X);
+            vertices.Add(vertex.TexCoords.Y);
             vertices.Add(vertex.Normal.X);
             vertices.Add(vertex.Normal.Y);
             vertices.Add(vertex.Normal.Z);
-            vertices.Add(vertex.TexCoords.X);
-            vertices.Add(vertex.TexCoords.Y);
         }
 
         return vertices.ToArray();

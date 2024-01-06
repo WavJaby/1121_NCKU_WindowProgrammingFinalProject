@@ -14,21 +14,24 @@ public class Mesh : IDisposable {
     private BufferObject<float> _vbo;
     private BufferObject<uint> _ebo;
     public uint IndicesCount => (uint) _indices.Length;
-    
-    public Mesh(GL gl, float[] vertices, uint[] indices) {
+
+    public Mesh(GL gl, float[] vertices, uint[] indices, bool normal) {
         _gl = gl;
         _vertices = vertices;
         _indices = indices;
-        SetupMesh();
+        SetupMesh(normal);
     }
 
-    private void SetupMesh() {
+    private void SetupMesh(bool normal) {
         _vao = new VertexArrayObject<float>(_gl);
         _vbo = new BufferObject<float>(_gl, _vertices, BufferTargetARB.ArrayBuffer);
         _ebo = new BufferObject<uint>(_gl, _indices, BufferTargetARB.ElementArrayBuffer);
-        _vao.VertexAttributePointer(0, 3, VertexAttribPointerType.Float, 8, 0);
-        _vao.VertexAttributePointer(1, 3, VertexAttribPointerType.Float, 8, 3);
-        _vao.VertexAttributePointer(2, 2, VertexAttribPointerType.Float, 8, 6);
+
+        uint vertexSize = normal ? 8u : 5u;
+        _vao.VertexAttributePointer(0, 3, VertexAttribPointerType.Float, vertexSize, 0);
+        _vao.VertexAttributePointer(1, 2, VertexAttribPointerType.Float, vertexSize, 3);
+        if (normal)
+            _vao.VertexAttributePointer(2, 3, VertexAttribPointerType.Float, vertexSize, 5);
 
         _vao.Unbind();
         _vbo.Unbind();

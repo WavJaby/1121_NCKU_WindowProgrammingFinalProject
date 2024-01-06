@@ -80,13 +80,14 @@ public class GameWindow {
         );
 
         // Setup
+        _gl.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
         _gl.BlendFunc(GLEnum.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
         _gl.Enable(EnableCap.DepthTest);
         _gl.Enable(EnableCap.Blend);
         DefaultShader.LoadDefaultShader(_gl);
         UIShader.LoadDefaultShader(_gl);
 
-        _scene = new MyScene(_window, input, _gl);
+        _scene = new GameScene(_window, input, _gl);
         _scene.Start();
 
         // Render thread
@@ -129,11 +130,12 @@ public class GameWindow {
         Stopwatch sw = new Stopwatch();
         sw.Start();
 
-        _scene.BeforeRender(deltaTime);
+        _scene.BeforeRender_(deltaTime);
         _gl.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
         // Render gameObjects
         foreach (var gameObject in _scene.GameObjects)
             gameObject.Render(_scene);
+        _scene.AfterRender(deltaTime);
 
         sw.Stop();
         long renderTimeMicro = sw.ElapsedTicks / (Stopwatch.Frequency / 1000_000L);

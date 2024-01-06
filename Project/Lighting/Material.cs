@@ -12,14 +12,14 @@ public struct Material {
     public readonly Texture? Specular;
     public readonly float Shininess;
 
-    public Material(Texture? diffuse, Texture? specular, float shininess) {
+    public Material(Texture? diffuse, Texture? specular = null, float shininess = 0) {
         LightMask = 0b11;
         Color = Vector4.One;
         Diffuse = diffuse;
         Specular = specular;
         Shininess = shininess;
     }
-    
+
     public Material(Vector4 color, float shininess, uint lightMask) {
         LightMask = lightMask;
         Color = color;
@@ -30,6 +30,7 @@ public struct Material {
 
     public Material(Color color, float shininess) :
         this(new Vector4(color.R / 255f, color.G / 255f, color.B / 255f, color.A / 255f), shininess, 0b11) { }
+
     public Material(Color color, float shininess, uint lightMask) :
         this(new Vector4(color.R / 255f, color.G / 255f, color.B / 255f, color.A / 255f), shininess, lightMask) { }
 

@@ -20,12 +20,12 @@ public class BoxCollider : Collider {
     public override bool CheckCollision(GameObject otherGameObject) {
         if (otherGameObject.Collider == null)
             return false;
+        // TODO: Support box collider
 
-        if (otherGameObject.Collider is BoxCollider sphereCollider) {
-            return Collider.CheckCollision(ForGameObject.Position, ForGameObject.Rotation, this,
-                otherGameObject.Position, otherGameObject.Rotation, sphereCollider);
-        }
-        // TODO: Support other collider
+        // if (otherGameObject.Collider is BoxCollider sphereCollider) {
+        //     return Collider.CheckCollision(ForGameObject.Position, ForGameObject.Rotation, this,
+        //         otherGameObject.Position, otherGameObject.Rotation, sphereCollider);
+        // }
         return false;
     }
 }

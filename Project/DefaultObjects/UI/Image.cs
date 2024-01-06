@@ -1,43 +1,44 @@
-﻿using Project.GameHelper;
+﻿using System.Numerics;
+using Project.GameHelper;
 using Project.lib;
 using Project.Lighting;
 using Silk.NET.OpenGL;
 
-namespace Project.defaultObjects;
+namespace Project.defaultObjects.UI;
 
-public class Plane : GameObject {
+public class Image : UIGameObject {
     private static readonly float[] Vertices = {
-        //X    Y      Z     UV          Normal
-        +0.5f, +0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, -1.0f,
-        +0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, -1.0f,
-        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f,
-        -0.5f, +0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, -1.0f,
+        //X    Y      Z     UV
+        +1.0f, +1.0f, 0.0f, 1.0f, 0.0f,
+        +1.0f, -1.0f, 0.0f, 1.0f, 1.0f,
+        -1.0f, -1.0f, 0.0f, 0.0f, 1.0f,
+        -1.0f, +1.0f, 0.0f, 0.0f, 0.0f,
     };
 
     private static readonly uint[] Indices = {
         0, 1, 3,
         1, 2, 3
     };
-
+    
     private readonly GL _gl;
-    private readonly DefaultShader _shader;
+    private readonly UIShader _shader;
     private readonly Mesh _mesh;
     private readonly Material _material;
 
-    public Plane(GL gl, Material material) {
+    public Image(GL gl, Material material) {
         _gl = gl;
-        _shader = new DefaultShader(gl);
-        _mesh = new Mesh(_gl, Vertices, Indices, true);
+        _shader = new UIShader(gl);
+        _mesh = new Mesh(_gl, Vertices, Indices, false);
         _material = material;
     }
-
+    
     public override unsafe void Render(Scene scene) {
         _mesh.Bind();
         _shader.Use();
         _material.Bind();
-        _shader.SetUniform("uModel", TransformMatrix);
+        _shader.SetUniform("uModel", Matrix4x4.Identity);
         _shader.SetMaterial(_material);
-        scene.ApplyCameraAndLighting(_shader);
+        scene.ApplyCameraUI(_shader);
         _gl.DrawElements(PrimitiveType.Triangles, (uint) Indices.Length, DrawElementsType.UnsignedInt, (void*) 0);
 
         _material.Unbind();

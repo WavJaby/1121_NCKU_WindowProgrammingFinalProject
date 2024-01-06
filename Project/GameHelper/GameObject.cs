@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Project.defaultObjects;
 
 namespace Project.GameHelper;
 
@@ -7,6 +8,7 @@ public abstract class GameObject : BaseGameObject {
     private Vector3 _position, _rotation, _scale = new(1);
     private Collider? _collider;
 
+    public Group? Parent;
     public Vector3 Velocity;
     public float Friction;
 

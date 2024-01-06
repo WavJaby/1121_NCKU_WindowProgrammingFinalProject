@@ -18,7 +18,7 @@ public class Sphere : GameObject {
         _gl = gl;
         _shader = new DefaultShader(gl);
         CreateSphereVerticesAndIndices(out _vertices, out _indices, Math.Max(segmentX, 3), Math.Max(segmentY, 1) + 1);
-        _mesh = new Mesh(_gl, _vertices, _indices);
+        _mesh = new Mesh(_gl, _vertices, _indices, true);
         _material = material;
     }
 
@@ -60,12 +60,13 @@ public class Sphere : GameObject {
                 vertexList.Add(x);
                 vertexList.Add(y);
                 vertexList.Add(z);
+                // uv
+                vertexList.Add(u);
+                vertexList.Add(v);
                 // Normal
                 vertexList.Add(x);
                 vertexList.Add(y);
                 vertexList.Add(z);
-                vertexList.Add(u);
-                vertexList.Add(v);
             }
         }
 

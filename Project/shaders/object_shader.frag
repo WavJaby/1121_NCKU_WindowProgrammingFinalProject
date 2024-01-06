@@ -61,7 +61,7 @@ vec4 CalcLightInternal(BaseLight light, vec3 lightDirection, vec3 normal) {
 	}
 
 	if (diffuseFactor > 0) {
-		diffuseColor = vec4(material.color.rgb * light.color.rgb * light.diffuseIntensity * diffuseFactor, 1);
+		diffuseColor = vec4(material.color.rgb * light.color.rgb, 1) * light.diffuseIntensity * diffuseFactor;
 		if (material.useDiffuse)
 		diffuseColor *= diffuseTexture;
 

@@ -62,7 +62,7 @@ void main() {
             0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
         };
 
-        _mesh = new Mesh(_gl, vertices, null);
+        _mesh = new Mesh(_gl, vertices, null, false);
     }
 
     public override void Render(Scene scene) {

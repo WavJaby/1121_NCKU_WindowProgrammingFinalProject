@@ -91,9 +91,9 @@ public class Camera {
 
         Front = Vector3.Normalize(cameraDirection);
         ViewMatrix = Matrix4x4.CreateLookAt(Position, Position + Front, Up);
-        
+
         ViewMatrix = ViewMatrix with {
-            M21 = -Offset.X, 
+            M21 = -Offset.X,
             M22 = Offset.Y
         };
     }

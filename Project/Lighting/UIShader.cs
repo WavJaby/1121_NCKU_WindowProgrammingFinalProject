@@ -34,12 +34,12 @@ public class UIShader : Shader {
     }
 
     public unsafe void SetViewport(Camera camera) {
-        Matrix4x4 viewMatrix = camera.ViewMatrix;
-        Matrix4x4 projectionMatrix = camera.ProjectionMatrix;
-        Gl.UniformMatrix4(_uViewLocation, 1, false, (float*) &viewMatrix);
+        // Matrix4x4 viewMatrix = camera.ViewMatrix;
+        Matrix4x4 projectionMatrix = Matrix4x4.Identity;
+        // Gl.UniformMatrix4(_uViewLocation, 1, false, (float*) &viewMatrix);
         Gl.UniformMatrix4(_uProjectionLocation, 1, false, (float*) &projectionMatrix);
-        Vector3 pos = camera.Position;
-        Gl.Uniform3(_viewPosLocation, pos.X, pos.Y, pos.Z);
+        // Vector3 pos = camera.Position;
+        // Gl.Uniform3(_viewPosLocation, pos.X, pos.Y, pos.Z);
     }
 
     public void SetMaterial(Material material) {

@@ -10,37 +10,37 @@ namespace Project.defaultObjects;
 
 public class Cube : GameObject {
     private static readonly float[] Vertices = {
-        //X    Y      Z      Normal      UV
+        //X    Y      Z      UV          Normal
         // Front face
-        -0.5f, -0.5f, +0.5f, 0.0f, 0.0f, +1.0f, 0.0f, 1.0f,
-        +0.5f, -0.5f, +0.5f, 0.0f, 0.0f, +1.0f, 1.0f, 1.0f,
-        +0.5f, +0.5f, +0.5f, 0.0f, 0.0f, +1.0f, 1.0f, 0.0f,
-        -0.5f, +0.5f, +0.5f, 0.0f, 0.0f, +1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f, +0.5f, 0.0f, 1.0f, 0.0f, 0.0f, +1.0f,
+        +0.5f, -0.5f, +0.5f, 1.0f, 1.0f, 0.0f, 0.0f, +1.0f,
+        +0.5f, +0.5f, +0.5f, 1.0f, 0.0f, 0.0f, 0.0f, +1.0f,
+        -0.5f, +0.5f, +0.5f, 0.0f, 0.0f, 0.0f, 0.0f, +1.0f,
         // Back face
-        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f,
-        +0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f,
-        +0.5f, +0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,
-        -0.5f, +0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 0.0f, 0.0f, -1.0f,
+        +0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, -1.0f,
+        +0.5f, +0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f,
+        -0.5f, +0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 0.0f, -1.0f,
         // Right face
-        +0.5f, -0.5f, +0.5f, +1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-        +0.5f, -0.5f, -0.5f, +1.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-        +0.5f, +0.5f, -0.5f, +1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-        +0.5f, +0.5f, +0.5f, +1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+        +0.5f, -0.5f, +0.5f, 0.0f, 1.0f, +1.0f, 0.0f, 0.0f,
+        +0.5f, -0.5f, -0.5f, 1.0f, 1.0f, +1.0f, 0.0f, 0.0f,
+        +0.5f, +0.5f, -0.5f, 1.0f, 0.0f, +1.0f, 0.0f, 0.0f,
+        +0.5f, +0.5f, +0.5f, 0.0f, 0.0f, +1.0f, 0.0f, 0.0f,
         // Left face
-        -0.5f, -0.5f, +0.5f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
-        -0.5f, +0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-        -0.5f, +0.5f, +0.5f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+        -0.5f, -0.5f, +0.5f, 1.0f, 1.0f, -1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f,
+        -0.5f, +0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,
+        -0.5f, +0.5f, +0.5f, 1.0f, 0.0f, -1.0f, 0.0f, 0.0f,
         // Top face
-        -0.5f, +0.5f, +0.5f, 0.0f, +1.0f, 0.0f, 0.0f, 1.0f,
-        +0.5f, +0.5f, +0.5f, 0.0f, +1.0f, 0.0f, 1.0f, 1.0f,
-        +0.5f, +0.5f, -0.5f, 0.0f, +1.0f, 0.0f, 1.0f, 0.0f,
-        -0.5f, +0.5f, -0.5f, 0.0f, +1.0f, 0.0f, 0.0f, 0.0f,
+        -0.5f, +0.5f, +0.5f, 0.0f, 1.0f, 0.0f, +1.0f, 0.0f,
+        +0.5f, +0.5f, +0.5f, 1.0f, 1.0f, 0.0f, +1.0f, 0.0f,
+        +0.5f, +0.5f, -0.5f, 1.0f, 0.0f, 0.0f, +1.0f, 0.0f,
+        -0.5f, +0.5f, -0.5f, 0.0f, 0.0f, 0.0f, +1.0f, 0.0f,
         // Bottom face
-        -0.5f, -0.5f, +0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f,
-        +0.5f, -0.5f, +0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f,
-        +0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f, +0.5f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f,
+        +0.5f, -0.5f, +0.5f, 1.0f, 0.0f, 0.0f, -1.0f, 0.0f,
+        +0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 0.0f, -1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f,
     };
 
     private static readonly uint[] Indices = {
@@ -77,7 +77,7 @@ public class Cube : GameObject {
     public Cube(GL gl, Material material) {
         _gl = gl;
         _shader = new DefaultShader(gl);
-        _mesh = new Mesh(_gl, Vertices, Indices);
+        _mesh = new Mesh(_gl, Vertices, Indices, true);
         _material = material;
     }
 
@@ -89,7 +89,7 @@ public class Cube : GameObject {
         _shader.SetMaterial(_material);
         scene.ApplyCameraAndLighting(_shader);
         _gl.DrawElements(PrimitiveType.Triangles, (uint) Indices.Length, DrawElementsType.UnsignedInt, (void*) 0);
-        
+
         _material.Unbind();
         _shader.Unbind();
     }
